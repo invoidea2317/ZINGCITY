@@ -40,10 +40,10 @@ android {
 
     compileSdkVersion 34 // or the latest version
 
-    namespace 'com.invoidea.zingcity' // Specify your package name
+    namespace 'com.invoidea.zingcitymainmain' // Specify your package name
 
     defaultConfig {
-        applicationId "com.invoidea.zingcity" // This should match your namespace
+        applicationId "com.invoidea.zingcitymainmain" // This should match your namespace
         minSdkVersion 21 // or your desired minimum SDK version
         targetSdkVersion 34 // or the latest version
         versionCode 3
