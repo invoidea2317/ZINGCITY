@@ -25,10 +25,10 @@ class SplashScreenCubit extends Cubit<SplashScreenState> {
   Future<void> chekToken() async {
     SharedPreferences prefs = await  SharedPreferences.getInstance();
       String? token =  await prefs.getString('token');
-
+       bool? isGuest = await prefs.getBool('isGuest');
     if (token != null) {
       log("Token is ", name: token);
-      emit(state.copyWith(Token: token));
+      emit(state.copyWith(Token: token,isGuest: isGuest));
     } else {
       log("Token is null", name: "SplashScreenCubit");
       emit(state.copyWith(Token: null));

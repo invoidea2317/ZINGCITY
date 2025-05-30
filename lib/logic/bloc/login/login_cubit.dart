@@ -74,6 +74,13 @@ class LoginCubit extends Cubit<LoginModelState> {
     }
   }
 
+  Future<void> isGuestUser(BuildContext context) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    preferences.setBool("isGuest", true);
+    Navigator.pushReplacementNamed(
+        context, RouteNames.mainPageScreen);
+  }
+
   void startTimer() {
     // Normalize the input to ensure it always includes minutes and seconds
     String timeString = state.time ?? "0:00";

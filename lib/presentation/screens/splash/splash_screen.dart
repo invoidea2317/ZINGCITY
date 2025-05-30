@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:real_estate/logic/bloc/splash_screen_state.dart';
 import 'package:real_estate/presentation/router/route_packages_name.dart';
+import 'package:real_estate/state_inject_package_names.dart';
 
 import '../../../logic/bloc/login/login_bloc.dart';
 import '../../../logic/bloc/splash_screen_cubit.dart';
@@ -19,10 +20,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
   @override
   void initState() {
     super.initState();
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: BlocConsumer<SplashScreenCubit, SplashScreenState>(
         listener: (context, state) {
-          if (state.Token != null) {
+          if (state.Token != null || state.isGuest == true) {
             Future.delayed(const Duration(seconds: 1), () {
               Navigator.pushReplacementNamed(
                   context, RouteNames.mainPageScreen);
@@ -65,7 +69,8 @@ class _SplashScreenState extends State<SplashScreen> {
           // if (state is AppSettingStateError) {
           //   return SettingErrorWidget(message: state.meg);
           // }
-          if (state.Token != null) {
+
+          if ((state.Token ?? "").isNotEmpty  || (state.isGuest ?? false) ) {
             Future.delayed(const Duration(seconds: 1), () {
               Navigator.pushReplacementNamed(
                   context, RouteNames.mainPageScreen);
@@ -76,8 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Navigator.pushReplacementNamed(
                   context, RouteNames.onBoardingScreen);
             });
-            // Navigator.pushReplacementNamed(
-            //     context, RouteNames.onBoardingScreen);
+
           }
 
           return Scaffold(

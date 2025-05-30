@@ -158,7 +158,7 @@ class TermsAndConditionScreen extends StatelessWidget {
           } else if (state is PrivacyPolicyError) {
             if (state.statusCode == 503) {
               return LoadedTermsCondition(
-                  termsConditionText: privacyCubit.termsConditionText!);
+                  termsConditionText: privacyCubit.termsConditionText ?? "");
             } else {
               return Center(
                 child: CustomTextStyle(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:real_estate/logic/bloc/login/login_cubit.dart';
 
 import '../../../../presentation/utils/constraints.dart';
 import '../../../../presentation/widget/custom_test_style.dart';
@@ -250,36 +251,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               SizedBox(
                 height: size.height * 0.02,
               ),
-              // SizedBox(
-              //   width: 322.98,
-              //   height: 74.02,
-              //   child: OutlinedButton(
-              //       style: OutlinedButton.styleFrom(
-              //         backgroundColor: Colors.transparent,
-              //         side: const BorderSide(color: Color(0xfff30469a), width: 3),
-              //         shape: RoundedRectangleBorder(
-              //           borderRadius: BorderRadius.circular(10),
-              //         ),
-              //       ),
-              //       onPressed: () {},
-              //       child:  Row(
-              //         mainAxisAlignment: MainAxisAlignment.center,
-              //         children: [
-              //           SvgPicture.asset("assets/Yash/images/giftIcon.svg"),
-              //           const SizedBox(width: 10,),
-              //           const Text(
-              //             'ZINGCITY Gift',
-              //             style: TextStyle(
-              //               color: Color(0xFF30469A),
-              //               fontSize: 18,
-              //               fontFamily: 'DM Sans',
-              //               fontWeight: FontWeight.w600,
-              //               height: 0,
-              //             ),
-              //           ),
-              //         ],
-              //       )),
-              // ),
+
               SizedBox(
                 height: size.height * 0.02,
               ),
@@ -289,11 +261,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
                 decoration: const BoxDecoration(
                   color: Color(0x23398BCB),
-                  // image: DecorationImage(
-                  //   // image: AssetImage(
-                  //   //     "assets/Yash/images/OnboardingImageIcon.png"),
-                  //   fit: BoxFit.cover,
-                  // ),
+
                 ),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -317,6 +285,27 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     height: 0,
                   ),
                 ),),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: (){
+                       context.read<LoginCubit>().isGuestUser(context);
+                    },
+                    child: const Text('Login as Guest',
+                    style: TextStyle(
+                      color: Color(0xFF30469A),
+                      fontSize: 16,
+                      fontFamily: 'DM Sans',
+                      fontWeight: FontWeight.w400,
+                      height: 0,
+                    ),)
+                  )
+                ],
               ),
               // GestureDetector(
               //   onTap: () {
